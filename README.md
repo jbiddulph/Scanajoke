@@ -65,6 +65,25 @@ npm start
 The server serves the built frontend from `dist` and exposes the joke endpoint at
 `/api/joke`.
 
+## Deploying to Vercel
+
+The app includes Vercel serverless functions in `api/`, so the same frontend can
+call `/api/joke` after deployment without exposing the OpenAI key to the browser.
+
+In Vercel project settings, add:
+
+```bash
+OPENAI_API_KEY=sk-your-openai-api-key
+```
+
+Then deploy with Vercel's default Vite settings:
+
+- Build command: `npm run build`
+- Output directory: `dist`
+
+Optional environment variables such as `OPENAI_MODEL` can also be configured in
+Vercel if you want to override the default model.
+
 ## Environment variables
 
 | Variable | Required | Description |
